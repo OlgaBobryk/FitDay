@@ -17,11 +17,11 @@ public class RemoteDriverManager extends DriverManager {
         browserOptions.setCapability("browserVersion", "15");
         Map<String, Object> sauceOptions = new HashMap<>();
         sauceOptions.put("build", "1");
-        sauceOptions.put("name", "Salesforce Create Account");
+        sauceOptions.put("name", "FitDay Create Account");
         browserOptions.setCapability("sauce:options", sauceOptions);
 
         try {
-            driver = new RemoteWebDriver(new URL("https://oauth-oljinja86-b76cd:12e55c15-9289-4230-8e9b-25ead80f3bfb@ondemand.eu-central-1.saucelabs.com:443/wd/hub"), browserOptions);
+            driver = new RemoteWebDriver(new URL("https://OlgaBobryk:80c3a436-5d99-4e37-b9ef-96e69790bb74@ondemand.eu-central-1.saucelabs.com:443/wd/hub"), browserOptions);
 
         } catch (MalformedURLException e) {
             e.printStackTrace();

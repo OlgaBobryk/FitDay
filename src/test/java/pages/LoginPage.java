@@ -4,6 +4,8 @@ import constants.Credentials;
 import constants.Urls;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.FakeMessageGenerator;
 
 public class LoginPage extends BasePage {
@@ -37,6 +39,8 @@ public class LoginPage extends BasePage {
         return new DashboardPage(driver);
     }
     public boolean logInFormDisplayed(){
+        WebDriverWait wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1")));
         return driver.findElement(logInForm).isDisplayed();
     }
 

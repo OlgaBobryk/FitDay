@@ -18,6 +18,8 @@ public class DashboardPage extends BasePage {
     }
 
     public boolean logoutLinkIsDisplayed() {
+        WebDriverWait wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@class='logout']")));
         return driver.findElement(logoutLink).isDisplayed();
     }
 
