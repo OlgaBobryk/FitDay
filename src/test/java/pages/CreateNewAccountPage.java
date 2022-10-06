@@ -9,8 +9,6 @@ public class CreateNewAccountPage extends BasePage {
     private By password = By.xpath("//input[@id='Password1']");
     private By confirmPassword = By.xpath("//input[@id='Password2']");
     private By email = By.xpath("//input[@name='Email']");
-
-    private By checkboxAgree = By.xpath("//input[@id='Agree']");
     private By signupButton = By.xpath("//input[@value='Sign Up']");
     private By errorMessageForPassword = By.xpath("//p[@class='error'][2]");
 

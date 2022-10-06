@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public class MainFitDayArticlesPage extends BasePage {
-    List<WebElement> sectionsOfArticlesLinks;
+    private List<WebElement> sectionsOfArticlesLinks;
 
     public MainFitDayArticlesPage(WebDriver driver) {
         super(driver);

@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import pages.*;
 
 public class ActivityTest extends BaseTest {
-    @Test
+    @Test (priority = 1, description = "User chooses activity from the list, inputs time for this activity and adds it to Log")
     public void checkActivity() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.openLoginPage();
@@ -24,7 +24,7 @@ public class ActivityTest extends BaseTest {
 
     }
 
-    @Test
+    @Test (priority = 2, description = "User changes type of Lifestyle. Calories are changed")
     public void changeLifestyleTest() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.openLoginPage();
@@ -36,7 +36,7 @@ public class ActivityTest extends BaseTest {
         LifestylePage lifestylePage = new LifestylePage(driver);
         lifestylePage.chooseLifestyle();
         lifestylePage.clickSaveButtonForChangeLifestyle();
-        Assert.assertEquals(activityLogPage.getActualKindOfLifestyle(),lifestylePage.chooseLifestyle(), "Lifestyles are different");
+        Assert.assertEquals(activityLogPage.getActualKindOfLifestyle(), lifestylePage.chooseLifestyle(), "Lifestyles are different");
 
 
     }

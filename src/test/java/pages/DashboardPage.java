@@ -44,6 +44,8 @@ public class DashboardPage extends BasePage {
     }
 
     public ProfilePage clickProfileLink() {
+        WebDriverWait wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='menu']//div[@class='fd-submenu']//ul[1]//li[3]//a")));
         driver.findElement(profileLink).click();
         return new ProfilePage(driver);
     }

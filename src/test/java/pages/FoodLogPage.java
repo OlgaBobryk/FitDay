@@ -13,10 +13,9 @@ import java.util.List;
 public class FoodLogPage extends BasePage {
 
     private By foodSearch = By.xpath("//div[@id='food-search-bar']//form[@class='fd-search-bar']//input");
-    List<WebElement> searchedFoodList;
-    List<WebElement> addedFoodList;
-    List<WebElement> editIconsList;
-    private By amountInput = By.xpath("//div[@id='food-bottom']//td[@class='default-amount']//input[@name='amount']");
+    private List<WebElement> searchedFoodList;
+    private List<WebElement> addedFoodList;
+    private List<WebElement> editIconsList;
     private By deleteButton=By.xpath("//div[@id='food-bottom']//div[@class='ib-options']//a[1]");
 
 

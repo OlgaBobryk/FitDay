@@ -8,7 +8,7 @@ import testData.PrepareRegistrationData;
 
 public class CreateNewAccountTest extends BaseTest {
 
-    @Test
+    @Test (description = "User creates the account with incorrect data ")
     public void createAccountWithIncorrectPassword() {
         CreateNewAccountPage createNewAccountPage = new CreateNewAccountPage(driver);
         createNewAccountPage.openRegistrationPage();

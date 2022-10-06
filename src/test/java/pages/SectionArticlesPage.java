@@ -11,7 +11,7 @@ import java.util.List;
 
 public class SectionArticlesPage extends BasePage {
     private By section = By.xpath("//h2[@id='page-title']");
-    List<WebElement> nutritionArticlesList;
+    private List<WebElement> nutritionArticlesList;
 
     public SectionArticlesPage(WebDriver driver) {
         super(driver);

@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class LifestylePage extends BasePage{
-    List<WebElement> kindsOfLifestyle;
+    private List<WebElement> kindsOfLifestyle;
     private By saveButtonForLifestyle=By.xpath("//div[@class='actions']//div[@class='right']//a[2]");
 
     public LifestylePage(WebDriver driver) {

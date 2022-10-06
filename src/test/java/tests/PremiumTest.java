@@ -5,9 +5,10 @@ import org.testng.annotations.Test;
 import pages.FreeAccountPage;
 import pages.LoginPage;
 import pages.PremiumPage;
+import utils.RetryAnalyzer;
 
 public class PremiumTest extends BaseTest {
-    @Test
+    @Test (description = "User tries to upgrade the account to Premium", retryAnalyzer = RetryAnalyzer.class)
     public void upgradeToPremium() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.openLoginPage();

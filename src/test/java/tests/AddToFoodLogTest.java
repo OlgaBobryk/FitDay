@@ -11,7 +11,7 @@ import pages.LoginPage;
 public class AddToFoodLogTest extends BaseTest {
 
 
-    @Test
+    @Test(priority = 1, description = "User choose food from search list and add it to FoodLog")
     public void addFood() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.openLoginPage();
@@ -27,7 +27,7 @@ public class AddToFoodLogTest extends BaseTest {
 
     }
 
-    @Test
+    @Test (priority = 2, description = "User deletes food from FoodLog")
     public void deleteFood() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.openLoginPage();

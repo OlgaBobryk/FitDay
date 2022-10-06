@@ -5,9 +5,11 @@ import org.testng.annotations.Test;
 import pages.DashboardPage;
 import pages.LoginPage;
 import pages.ProfilePage;
+import utils.RetryAnalyzer;
 
 public class ProfileTest extends BaseTest {
-    @Test
+
+    @Test(retryAnalyzer = RetryAnalyzer.class,description = "User tries to change height in profile ")
     public void changeHeightInProfile() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.openLoginPage();

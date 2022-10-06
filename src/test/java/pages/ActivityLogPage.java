@@ -13,8 +13,8 @@ import java.util.List;
 public class ActivityLogPage extends BasePage {
 
     private By searchForActivity = By.xpath("//select[@id='activity-browse']");
-    List<WebElement> addIconList;
-    List<WebElement> activityList;
+    private List<WebElement> addIconList;
+    private List<WebElement> activityList;
     private By lifeStyle = By.xpath("//td[@class='name']//a");
 
 

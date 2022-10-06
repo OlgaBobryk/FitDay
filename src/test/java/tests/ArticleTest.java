@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import pages.*;
 
 public class ArticleTest extends BaseTest {
-    @Test
+    @Test (description = "User chooses an article from an section")
     public void checkArticleSection() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.openLoginPage();

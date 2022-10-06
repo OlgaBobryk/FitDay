@@ -12,8 +12,8 @@ public class AddToActivityLogPage extends BasePage {
     private By addToActivityLogButton = By.xpath("//div[@id='activity-add-top']//div[@class='right']//a");
     private By hoursInput = By.xpath("//input[@name='hours']");
     private By minutesInput = By.xpath("//input[@name='minutes']");
-    String timeHours = String.valueOf(FakeMessageGenerator.generateHours());
-    String timeMinutes = String.valueOf(FakeMessageGenerator.generateMinutes());
+    private String timeHours = String.valueOf(FakeMessageGenerator.generateHours());
+    private String timeMinutes = String.valueOf(FakeMessageGenerator.generateMinutes());
     private By activityToAdd = By.xpath("//div[@id='activity-add-top']//p[1]");
 
 
@@ -47,6 +47,8 @@ public class AddToActivityLogPage extends BasePage {
     }
 
     public String getTitleOfExpectedActivity() {
+        WebDriverWait wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='activity-add-top']//p[1]")));
         return driver.findElement(activityToAdd).getText();
 
     }
