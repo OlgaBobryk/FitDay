@@ -1,5 +1,6 @@
 package utils;
 
+import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -24,17 +25,14 @@ public class TestListeners implements ITestListener {
     }
 
     @Override
+    @Attachment(value = "screenshot", type = "image/png")
+
     public void onTestFailure(ITestResult iTestResult) {
         Object currentClass = iTestResult.getInstance();
         WebDriver driver = ((BaseTest) currentClass).getDriver();
-        TakesScreenshot screenShot = ((TakesScreenshot) driver);
-        byte[] sourceFile = screenShot.getScreenshotAs(OutputType.BYTES);
-        try {
-            Files.write(Paths.get("src/test/resources/screenshot.png"), sourceFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        AllureService allureService = new AllureService();
+        allureService.getSystemName();
+        allureService.takeScreenshot(driver);
 
     }
 

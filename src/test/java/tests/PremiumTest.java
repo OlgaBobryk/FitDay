@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
@@ -13,6 +14,7 @@ public class PremiumTest extends BaseTest {
     private static final Logger LOGGER = LogManager.getLogger(PremiumTest.class.getName());
 
     @Test (description = "User tries to upgrade the account to Premium", retryAnalyzer = RetryAnalyzer.class)
+    @Description("User tries to upgrade the account to Premium")
     public void upgradeToPremium() {
         LoginPage loginPage = new LoginPage(driver);
         LOGGER.info(String.format("Page %s initialized", LoginPage.class.getName()));

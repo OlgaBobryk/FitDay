@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
@@ -10,6 +11,7 @@ public class ArticleTest extends BaseTest {
     private static final Logger LOGGER = LogManager.getLogger(ArticleTest.class.getName());
 
     @Test (description = "User chooses an article from an section")
+    @Description("User tries to choose an article and check its article section")
 
     public void checkArticleSection() {
         LoginPage loginPage = new LoginPage(driver);

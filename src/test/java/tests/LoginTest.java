@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
@@ -11,7 +12,7 @@ public class LoginTest extends BaseWithThreadLocal {
     private static final Logger LOGGER = LogManager.getLogger(LoginTest.class.getName());
 
     @Test(priority = 2, description = "User performs login to the account with valid data")
-
+    @Description("User tries to login with valid data")
     public void loginToFitDayWithValidDate() {
         LoginPage loginPage = new LoginPage(driver);
         LOGGER.info(String.format("Page %s initialized", LoginPage.class.getName()));
@@ -27,6 +28,8 @@ public class LoginTest extends BaseWithThreadLocal {
     }
 
     @Test(priority = 1, description = "User performs login to the account with invalid data")
+    @Description("User tries to login with invalid data")
+
     public void loginToFitDayUnregisteredUser() {
         LoginPage loginPage = new LoginPage(driver);
         LOGGER.info(String.format("Page %s initialized", LoginPage.class.getName()));

@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
@@ -14,6 +15,7 @@ public class ProfileTest extends BaseTest {
 
 
     @Test(retryAnalyzer = RetryAnalyzer.class, description = "User tries to change height in profile ")
+    @Description("User tries to change height in profile")
     public void changeHeightInProfile() {
         LoginPage loginPage = new LoginPage(driver);
         LOGGER.info(String.format("Page %s initialized", LoginPage.class.getName()));

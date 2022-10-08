@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
@@ -12,8 +13,8 @@ public class ActivityTest extends BaseTest {
 
 
     @Test(priority = 2, description = "User chooses activity from the list, inputs time for this activity and adds it to Log")
-
-    public void checkActivity() {
+    @Description("User tries to add activity to ActivityLog")
+    public void addActivity() {
         LoginPage loginPage = new LoginPage(driver);
         LOGGER.info(String.format("Page %s initialized", LoginPage.class.getName()));
         LOGGER.info(String.format("Open %s page", LoginPage.class.getName()));
@@ -39,7 +40,7 @@ public class ActivityTest extends BaseTest {
         addToActivityLogPage.addMinutesForActivity();
         LOGGER.info("Add activity to Log and");
         addToActivityLogPage.clickAddToActivityButton();
-        LOGGER.info(String.format("Get title %s of chosen activity",activityLogPage.getTitleOfActivityToAdd() ));
+        LOGGER.info(String.format("Get title %s of chosen activity", activityLogPage.getTitleOfActivityToAdd()));
         String actualActivity = activityLogPage.getTitleOfActivityToAdd();
         LOGGER.info(String.format("Check if actual activity %s and expected  activity %s are identical", actualActivity, expectedActivity));
         Assert.assertEquals(actualActivity, expectedActivity, "Activity wasn't added");
@@ -47,7 +48,7 @@ public class ActivityTest extends BaseTest {
     }
 
     @Test(priority = 1, description = "User changes type of Lifestyle. Calories are changed")
-
+    @Description("User tries to change LifeStyle in ActivityLog")
     public void changeLifestyleTest() {
         LoginPage loginPage = new LoginPage(driver);
         LOGGER.info(String.format("Page %s initialized", LoginPage.class.getName()));

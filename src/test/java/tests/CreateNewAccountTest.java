@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import models.RegistrationModel;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -14,7 +15,7 @@ public class CreateNewAccountTest extends BaseTest {
 
 
     @Test(description = "User creates the account with incorrect data ")
-
+@Description("User tries to create an account")
     public void createAccountWithIncorrectPassword() {
         CreateNewAccountPage createNewAccountPage = new CreateNewAccountPage(driver);
         LOGGER.info(String.format("Page %s initialized", CreateNewAccountPage.class.getName()));

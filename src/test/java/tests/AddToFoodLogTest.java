@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
@@ -15,7 +16,7 @@ public class AddToFoodLogTest extends BaseTest {
     private static final Logger LOGGER = LogManager.getLogger(AddToFoodLogTest.class.getName());
 
     @Test(priority = 1, description = "User choose food from search list and add it to FoodLog")
-
+    @Description("User tries to add food  to FoodLog from search list")
     public void addFood() {
         LoginPage loginPage = new LoginPage(driver);
         LOGGER.info(String.format("Page %s initialized", LoginPage.class.getName()));
@@ -45,6 +46,7 @@ public class AddToFoodLogTest extends BaseTest {
     }
 
     @Test(priority = 2, description = "User deletes food from FoodLog")
+    @Description ("User tries to delete food from list in his FoodLog")
     public void deleteFood() {
         LoginPage loginPage = new LoginPage(driver);
         LOGGER.info(String.format("Page %s initialized", LoginPage.class.getName()));
