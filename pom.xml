@@ -16,7 +16,8 @@
         <webdrivermanager.version>3.8.1</webdrivermanager.version>
         <logo.version>1.2.17</logo.version>
         <aspectj.version>1.9.7</aspectj.version>
-        <suiteXmlFile>src/test/resources/testsuites/ParametersSuite.xml</suiteXmlFile>
+        <allure-tesng>2.19.0</allure-tesng>
+        <suiteXmlFile>src/test/resources/testsuites/RegressionSuite.xml</suiteXmlFile>
 
     </properties>
 
@@ -56,7 +57,7 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
-            <version>2.19.0</version>
+            <version>${allure-tesng}</version>
         </dependency>
 
     </dependencies>
