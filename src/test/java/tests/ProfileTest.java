@@ -1,5 +1,6 @@
 package tests;
 
+
 import io.qameta.allure.Description;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -13,21 +14,20 @@ import utils.RetryAnalyzer;
 public class ProfileTest extends BaseTest {
     private static final Logger LOGGER = LogManager.getLogger(ProfileTest.class.getName());
 
-
     @Test(retryAnalyzer = RetryAnalyzer.class, description = "User tries to change height in profile ")
     @Description("User tries to change height in profile")
     public void changeHeightInProfile() {
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(driverManager.getDriver());
         LOGGER.info(String.format("Page %s initialized", LoginPage.class.getName()));
         LOGGER.info(String.format("Open %s page", LoginPage.class.getName()));
         loginPage.openLoginPage();
         LOGGER.info("Log in to FitDay");
         loginPage.loginToFitDayWithValidData();
-        DashboardPage dashboardPage = new DashboardPage(driver);
+        DashboardPage dashboardPage = new DashboardPage(driverManager.getDriver());
         LOGGER.info(String.format("Page %s initialized", DashboardPage.class.getName()));
         LOGGER.info("Go to Profile");
         dashboardPage.clickProfileLink();
-        ProfilePage profilePage = new ProfilePage(driver);
+        ProfilePage profilePage = new ProfilePage(driverManager.getDriver());
         LOGGER.info(String.format("Page %s initialized", ProfilePage.class.getName()));
         LOGGER.info("Edit profile");
         profilePage.clickEditButton();
@@ -41,8 +41,5 @@ public class ProfileTest extends BaseTest {
         String expectedResult = profilePage.getExpectedHeight();
         LOGGER.info(String.format("Check if actual %s and expected %s height are equals", actualResult,expectedResult));
         Assert.assertEquals(actualResult, expectedResult, "height data  is different");
-
-
     }
-
 }

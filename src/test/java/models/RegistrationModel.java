@@ -12,6 +12,4 @@ public class RegistrationModel {
     private String password;
     private String confirmPassword;
     private String email;
-
-
 }

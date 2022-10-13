@@ -18,21 +18,21 @@ public class AddToFoodLogTest extends BaseTest {
     @Test(priority = 1, description = "User choose food from search list and add it to FoodLog")
     @Description("User tries to add food  to FoodLog from search list")
     public void addFood() {
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(driverManager.getDriver());
         LOGGER.info(String.format("Page %s initialized", LoginPage.class.getName()));
         LOGGER.info(String.format("Open %s page", LoginPage.class.getName()));
         loginPage.openLoginPage();
         LOGGER.info("Log in to FitDay");
         loginPage.loginToFitDayWithValidData();
-        DashboardPage dashboardPage = new DashboardPage(driver);
+        DashboardPage dashboardPage = new DashboardPage(driverManager.getDriver());
         LOGGER.info(String.format("Page %s initialized", DashboardPage.class.getName()));
         LOGGER.info("Go to FoodLog Page");
         dashboardPage.clickAddButtonFoodLog();
-        FoodLogPage foodLogPage = new FoodLogPage(driver);
+        FoodLogPage foodLogPage = new FoodLogPage(driverManager.getDriver());
         LOGGER.info(String.format("Page %s initialized", FoodLogPage.class.getName()));
         LOGGER.info("Search food");
         foodLogPage.searchFood();
-        AddToFoodLogPage addToFoodLogPage = new AddToFoodLogPage(driver);
+        AddToFoodLogPage addToFoodLogPage = new AddToFoodLogPage(driverManager.getDriver());
         LOGGER.info(String.format("Page %s initialized", AddToFoodLogTest.class.getName()));
         LOGGER.info(String.format("Get the title  %s of expected food name", addToFoodLogPage.getExpectedTitleOfFood()));
         String expectedFoodName = addToFoodLogPage.getExpectedTitleOfFood();
@@ -42,23 +42,22 @@ public class AddToFoodLogTest extends BaseTest {
         String actualFoodName=foodLogPage.actualTitleOfFood();
         LOGGER.info(String.format("Check if actual food name %s and expected food name  %s are identical",actualFoodName,expectedFoodName));
         Assert.assertEquals(actualFoodName, expectedFoodName, "Food wasn't added");
-
     }
 
     @Test(priority = 2, description = "User deletes food from FoodLog")
     @Description ("User tries to delete food from list in his FoodLog")
     public void deleteFood() {
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(driverManager.getDriver());
         LOGGER.info(String.format("Page %s initialized", LoginPage.class.getName()));
         LOGGER.info(String.format("Open %s page", LoginPage.class.getName()));
         loginPage.openLoginPage();
         LOGGER.info("Log in to FitDay");
         loginPage.loginToFitDayWithValidData();
-        DashboardPage dashboardPage = new DashboardPage(driver);
+        DashboardPage dashboardPage = new DashboardPage(driverManager.getDriver());
         LOGGER.info(String.format("Page %s initialized", DashboardPage.class.getName()));
         LOGGER.info("Go to ActivityLog Page");
         dashboardPage.clickAddButtonFoodLog();
-        FoodLogPage foodLogPage = new FoodLogPage(driver);
+        FoodLogPage foodLogPage = new FoodLogPage(driverManager.getDriver());
         LOGGER.info(String.format("Page %s initialized", FoodLogPage.class.getName()));
         LOGGER.info(String.format("Get  amount %s of food title in Log before delete",foodLogPage.getAmountOfEditIconsBeforeDelete() ));
         int expectedAmount = foodLogPage.getAmountOfEditIconsBeforeDelete();
@@ -70,7 +69,5 @@ public class AddToFoodLogTest extends BaseTest {
         int actualAmount=foodLogPage.getAmountOfEditIconsAfterDelete();
         LOGGER.info(String.format("Check if actual amount %s and expected amount  %s are identical",actualAmount,expectedAmount));
         Assert.assertEquals(actualAmount, expectedAmount, "Amount wasn't changed");
-
-
     }
 }

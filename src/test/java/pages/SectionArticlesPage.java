@@ -17,6 +17,7 @@ public class SectionArticlesPage extends BasePage {
 
 
     private By section = By.xpath("//h2[@id='page-title']");
+    private  By article=By.xpath("//p[@class='more-link']//a");
     private List<WebElement> articlesList;
     private int indexOfArticle=FakeMessageGenerator.generateNumberToEighteen();
 
@@ -27,14 +28,14 @@ public class SectionArticlesPage extends BasePage {
     @Step("Get section title")
     public String getSectionTitle() {
         WebDriverWait wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[@id='page-title']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(section));
         return driver.findElement(section).getText();
     }
 
     @Step("Choose article")
     public ArticlePage chooseArticle() {
         LOGGER.debug(String.format("Add all article of its section to list,choose one by index %s",  indexOfArticle));
-        articlesList = driver.findElements(By.xpath("//p[@class='more-link']//a"));
+        articlesList = driver.findElements(article);
         articlesList.get(indexOfArticle).click();
         return new ArticlePage(driver);
     }

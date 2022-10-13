@@ -11,7 +11,6 @@ import utils.FakeMessageGenerator;
 public class ProfilePage extends BasePage {
     private static final Logger LOGGER = LogManager.getLogger(ProfilePage.class.getName());
 
-
     private By editButtonForProfile = By.xpath("//div[@class='right']//a[@class='edit button']");
     private By saveButtonForProfile = By.xpath("//div[@class='actions']//div[@class='right']//a[2]");
     private By heightInput = By.xpath("//input[@id='profile-height-meters']");
@@ -37,7 +36,6 @@ public class ProfilePage extends BasePage {
         LOGGER.debug(String.format("Attempt to input new value of height %s", height1));
         element.sendKeys(height1);
         return this;
-
     }
 
     @Step("Save changing of height")
@@ -56,8 +54,6 @@ public class ProfilePage extends BasePage {
     public String checkValueOfHeight() {
         driver.findElement(editButtonForProfile).click();
         return driver.findElement(heightInput).getAttribute("value");
-
     }
-
 }
 

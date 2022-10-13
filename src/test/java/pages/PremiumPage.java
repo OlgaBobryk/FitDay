@@ -17,11 +17,12 @@ public class PremiumPage extends BasePage {
     public PremiumPage(WebDriver driver) {
         super(driver);
     }
-@Step("Click BuyNow button")
+
+    @Step("Click BuyNow button")
     public FreeAccountPage clickBuyNowButton() {
         WebDriverWait wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='Intro']//div[2]//span")));
-        LOGGER.debug(String.format("Attempt to click BuyNow button find %s",buyNowButton));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(buyNowButton));
+        LOGGER.debug(String.format("Attempt to click BuyNow button find %s", buyNowButton));
         driver.findElement(buyNowButton).click();
         return new FreeAccountPage(driver);
     }

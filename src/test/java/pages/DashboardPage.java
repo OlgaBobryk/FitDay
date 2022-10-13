@@ -26,7 +26,7 @@ public class DashboardPage extends BasePage {
     @Step("Log out link is displayed")
     public boolean logoutLinkIsDisplayed() {
         WebDriverWait wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@class='logout']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(logoutLink));
         return driver.findElement(logoutLink).isDisplayed();
     }
 
@@ -40,17 +40,16 @@ public class DashboardPage extends BasePage {
     @Step("Go to FoodLog")
     public FoodLogPage clickAddButtonFoodLog() {
         WebDriverWait wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[1]//a[@class ='add button']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(addButtonFoodLog));
         LOGGER.debug(String.format("Attempt to click the Add button find %s and go to FoodLog Page", addButtonFoodLog));
         driver.findElement(addButtonFoodLog).click();
         return new FoodLogPage(driver);
-
     }
 
     @Step("Go to ActivityLog")
     public ActivityLogPage clickAddButtonActivityLog() {
         WebDriverWait wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[2]//a[@class ='add button']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(addButtonActivityLog));
         LOGGER.debug(String.format("Attempt to click the Add button find %s and go to ActivityLog Page", addButtonActivityLog));
         driver.findElement(addButtonActivityLog).click();
         return new ActivityLogPage(driver);
@@ -59,7 +58,7 @@ public class DashboardPage extends BasePage {
     @Step("Go to Profile")
     public ProfilePage clickProfileLink() {
         WebDriverWait wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='menu']//div[@class='fd-submenu']//ul[1]//li[3]//a")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(profileLink));
         LOGGER.debug(String.format("Attempt to click link find %s and go to Profile Page", profileLink));
         driver.findElement(profileLink).click();
         return new ProfilePage(driver);

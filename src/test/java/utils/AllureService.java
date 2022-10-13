@@ -17,6 +17,5 @@ public class AllureService {
     @Attachment
     public String getSystemName() {
         return System.getProperty("os.name");
-
     }
 }

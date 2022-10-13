@@ -13,10 +13,14 @@ import utils.FakeMessageGenerator;
 
 import java.util.List;
 
+
 public class ActivityLogPage extends BasePage {
     private static final Logger LOGGER = LogManager.getLogger(ActivityLogPage.class.getName());
 
     private By searchForActivity = By.xpath("//select[@id='activity-browse']");
+    private By activityListResultsTable = By.xpath("//form[@id='result-activities']//table[@class='ib-list results']");
+    private By addIcon = By.xpath("//a[@class='add icon']");
+    private By activity = By.xpath("//table[@class='ib-list']//tbody/tr[contains(@class, 'activity')]//td[1]");
     private List<WebElement> addIconList;
     private List<WebElement> activityList;
     private By lifeStyle = By.xpath("//td[@class='name']//a");
@@ -29,7 +33,7 @@ public class ActivityLogPage extends BasePage {
     @Step("Choose kind of activity from list")
     public ActivityLogPage chooseActivity() {
         WebDriverWait wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//select[@id='activity-browse']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(searchForActivity));
         WebElement dropdownList = driver.findElement(searchForActivity);
         Select selectOption = new Select(dropdownList);
         LOGGER.debug(String.format("Attempt to choose one kind of activities by index %s from dropdownList find %s", FakeMessageGenerator.generateNumberToEighteen(), searchForActivity));
@@ -40,22 +44,19 @@ public class ActivityLogPage extends BasePage {
     @Step("Choose activity")
     public AddToActivityLogPage addActivity() {
         WebDriverWait wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@id='result-activities']//table[@class='ib-list results']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(activityListResultsTable));
         LOGGER.debug(String.format("Attempt to choose activity by index %s from List and click addIcon ", 0));
-        addIconList = driver.findElements(By.xpath("//a[@class='add icon']"));
+        addIconList = driver.findElements(addIcon);
         addIconList.get(0).click();
         return new AddToActivityLogPage(driver);
     }
 
     @Step("Get title of activity")
     public String getTitleOfActivityToAdd() {
-        activityList = driver.findElements(By.xpath("//table[@class='ib-list']//tbody/tr[contains(@class, 'activity')]//td[1]"));
+        activityList = driver.findElements(activity);
         LOGGER.debug(String.format("Attempt to get amount %s of activity", activityList.size()));
         int size = activityList.size();
         return activityList.get(size - 1).getText();
-
-
-
     }
 
     @Step("Go to LifeStyle Page")
@@ -68,7 +69,5 @@ public class ActivityLogPage extends BasePage {
     @Step("Get kind of Lifestyle after changing")
     public String getActualKindOfLifestyle() {
         return driver.findElement(lifeStyle).getText();
-
-
     }
 }

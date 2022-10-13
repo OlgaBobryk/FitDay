@@ -10,7 +10,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.FakeMessageGenerator;
 
+
 public class AddToActivityLogPage extends BasePage {
+    private static final Logger LOGGER = LogManager.getLogger(AddToActivityLogPage.class.getName());
 
     private By addToActivityLogButton = By.xpath("//div[@id='activity-add-top']//div[@class='right']//a");
     private By hoursInput = By.xpath("//input[@name='hours']");
@@ -24,12 +26,10 @@ public class AddToActivityLogPage extends BasePage {
         super(driver);
     }
 
-    private static final Logger LOGGER = LogManager.getLogger(AddToActivityLogPage.class.getName());
-
     @Step("Enter hours for activity")
     public AddToActivityLogPage addHoursForActivity() {
         WebDriverWait wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='hours']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(hoursInput));
         LOGGER.debug(String.format("Clear field find %s for enter hours", hoursInput));
         WebElement hours = driver.findElement(hoursInput);
         hours.clear();
@@ -51,19 +51,17 @@ public class AddToActivityLogPage extends BasePage {
     @Step("Click AddToActivityLog button")
     public ActivityLogPage clickAddToActivityButton() {
         WebDriverWait wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='activity-add-top']//div[@class='right']//a")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(addToActivityLogButton));
         LOGGER.debug(String.format("Click AddToActivityLog button find %S", addToActivityLogButton));
         driver.findElement(addToActivityLogButton).click();
         return new ActivityLogPage(driver);
-
     }
 
     @Step("Get title of expected activity")
     public String getTitleOfExpectedActivity() {
         WebDriverWait wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='activity-add-top']//p[1]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(activityToAdd));
         return driver.findElement(activityToAdd).getText();
-
     }
 }
 

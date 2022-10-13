@@ -11,12 +11,10 @@ public class FakeMessageGenerator {
 
     public static String generatePassword() {
         return new Faker().numerify("#####");
-
     }
 
     public static String generateEmail() {
         return new Faker().internet().emailAddress();
-
     }
 
     public static String generateAmount() {
@@ -37,7 +35,6 @@ public class FakeMessageGenerator {
 
     public static Integer generateNumberToEighteen() {
         return new Faker().random().nextInt(2, 18);
-
     }
 
     public static Integer generateNumberToThree() {

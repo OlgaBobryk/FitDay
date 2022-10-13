@@ -57,7 +57,7 @@ public class LoginPage extends BasePage {
     @Step("Login form is displayed")
     public boolean logInFormDisplayed() {
         WebDriverWait wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(logInForm));
         return driver.findElement(logInForm).isDisplayed();
     }
 
@@ -67,6 +67,4 @@ public class LoginPage extends BasePage {
         driver.findElement(upgradeLink).click();
         return;
     }
-
-
 }

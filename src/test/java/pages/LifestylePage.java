@@ -12,8 +12,10 @@ import java.util.List;
 public class LifestylePage extends BasePage {
     private static final Logger LOGGER = LogManager.getLogger(LifestylePage.class.getName());
 
+    private By kindOfLifestyle=By.xpath("//table[@class='ib-list'][2]//td//label");
     private List<WebElement> kindsOfLifestyle;
     private By saveButtonForLifestyle = By.xpath("//div[@class='actions']//div[@class='right']//a[2]");
+
 
     public LifestylePage(WebDriver driver) {
         super(driver);
@@ -22,11 +24,10 @@ public class LifestylePage extends BasePage {
     @Step("Choose Lifestyle")
     public String chooseLifestyle() {
         LOGGER.debug("Add all kinds of LifeStyle to list");
-        kindsOfLifestyle = driver.findElements(By.xpath("//table[@class='ib-list'][2]//td//label"));
+        kindsOfLifestyle = driver.findElements(kindOfLifestyle);
         WebElement lifestyleElement = kindsOfLifestyle.get(3);
         lifestyleElement.click();
         return lifestyleElement.getText();
-
     }
 
     @Step("Save Lifestyle")

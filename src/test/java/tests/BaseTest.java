@@ -9,14 +9,12 @@ import utils.TestListeners;
 
 @Listeners(TestListeners.class)
 public class BaseTest {
-
-    public WebDriver driver;
-    public DriverManager driverManager;
+    DriverManager driverManager;
 
     @BeforeMethod
     @Parameters({"browserType"})
-    public void setUp(@Optional("chrome") String browser) {
-        DriverFactory driverFactory = new DriverFactory();
+    public void setup(@Optional("chrome") String browser) {
+        DriverFactory factory = new DriverFactory();
         DriverType type = null;
         if (browser.equals("chrome")) {
             type = DriverType.CHROME;
@@ -24,18 +22,14 @@ public class BaseTest {
             type = DriverType.FIREFOX;
         } else if (browser.equals("remote")) {
             type = DriverType.REMOTE;
-
         }
-        driverManager = driverFactory.getManager(type);
+        driverManager = factory.getManager(type);
         driverManager.createDriver();
-        driverManager.setTimeout();
         driverManager.startMaximize();
-        driver = driverManager.getDriver();
+        driverManager.setTimeout();
     }
-
-
     public WebDriver getDriver() {
-        return driver;
+        return driverManager.getDriver();
     }
 
     @AfterMethod(alwaysRun = true)
