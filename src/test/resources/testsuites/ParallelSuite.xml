@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" name="ParallelRun" parallel="classes">
+    <test name="Fitday">
+        <classes>
+            <class name="tests.ArticleTest"/>
+            <class name="tests.CreateNewAccountTest"/>
+        </classes>
+    </test> <!-- Test -->
+
+</suite>

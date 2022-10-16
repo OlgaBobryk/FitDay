@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Test">
+    <parameter name="browserType" value="chrome"></parameter>
+    <test name="Registration">
+        <classes>
+            <class name="tests.CreateNewAccountTest"></class>
+            <class name="tests.LoginTest"></class>
+            <class name="tests.PremiumTest"></class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Log ">
+        <classes>
+            <class name="tests.AddToFoodLogTest"></class>
+            <class name="tests.ActivityTest"></class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Profile ">
+        <classes>
+            <class name="tests.ProfileTest"></class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Article section">
+        <classes>
+            <class name="tests.ArticleTest"></class>
+        </classes>
+    </test> <!-- Test -->
+</suite>
+
