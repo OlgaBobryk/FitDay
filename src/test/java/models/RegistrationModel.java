@@ -7,7 +7,6 @@ import lombok.Data;
 @Builder
 
 public class RegistrationModel {
-
     private String username;
     private String password;
     private String confirmPassword;

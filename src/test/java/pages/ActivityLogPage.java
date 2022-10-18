@@ -24,6 +24,7 @@ public class ActivityLogPage extends BasePage {
     private List<WebElement> addIconList;
     private List<WebElement> activityList;
     private By lifeStyle = By.xpath("//td[@class='name']//a");
+    private int selectedIndex=FakeMessageGenerator.generateNumberToEighteen();
 
 
     public ActivityLogPage(WebDriver driver) {
@@ -36,8 +37,8 @@ public class ActivityLogPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(searchForActivity));
         WebElement dropdownList = driver.findElement(searchForActivity);
         Select selectOption = new Select(dropdownList);
-        LOGGER.debug(String.format("Attempt to choose one kind of activities by index %s from dropdownList find %s", FakeMessageGenerator.generateNumberToEighteen(), searchForActivity));
-        selectOption.selectByIndex(FakeMessageGenerator.generateNumberToEighteen());
+        LOGGER.debug(String.format("Attempt to choose one kind of activities by index %s from dropdownList find %s", selectedIndex, searchForActivity));
+        selectOption.selectByIndex(selectedIndex);
         return this;
     }
 
